@@ -1,6 +1,6 @@
 local WINDOW_WIDTH = 500
 local WINDOW_HEIGHT = 180
-local SPRITE_PATH = 'assets/sprites/bgsprite.png'
+local SPRITE_PATH = 'bgsprite.png'
 local ENEMY_SCALE = 0.2
 local MIN_ENEMY_SPEED = 60
 local MAX_ENEMY_SPEED = 100
@@ -31,7 +31,7 @@ local gg = {
     xvel = 0,
     speed = 28,
     friction = 3,
-    sprite = love.graphics.newImage('assets/sprites/ggsprite.png'),
+    sprite = love.graphics.newImage('ggsprite.png'),
     bulletSpeed = 400,
     bulletWidth = 8,
     bulletHeight = 18,
@@ -70,12 +70,12 @@ end
 
 function love.load()
     sprite = love.graphics.newImage(SPRITE_PATH)
-    gameOverFont = love.graphics.newFont(48)  -- Set the font size for the Game Over text
+    gameOverFont = love.graphics.newFont(48)
 end
 
 function love.update(dt)
     if gameOver then
-        return  -- Exit early to pause the game updates
+        return
     end
 
     gg.x = gg.x + gg.xvel
@@ -180,11 +180,11 @@ function love.draw()
         local boxX = 100
         local boxY = 350
 
-        love.graphics.setColor(1, 1, 1, 0.7)  -- Set the box background color to white with low opacity
+        love.graphics.setColor(1, 1, 1, 0.7)
         love.graphics.rectangle("fill", boxX, boxY, boxWidth, boxHeight)
 
-        love.graphics.setFont(gameOverFont)  -- Set the font to the larger size
-        love.graphics.setColor(0, 0, 0, 1)  -- Set the text color to black for better contrast
+        love.graphics.setFont(gameOverFont)
+        love.graphics.setColor(0, 0, 0, 1)
         love.graphics.printf("Game Over", boxX, boxY + (boxHeight / 2) - 24, boxWidth, "center")
     end
 end
